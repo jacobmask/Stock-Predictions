@@ -1,0 +1,10 @@
+.profile
+.python_history
+__MACOSX/
+test1/
+.cache/
+.bash_history
+.bash_logout
+.bashrc
+.config/
+.local/
