@@ -33,7 +33,7 @@ def main():
     X_val = np.asarray(X_val).astype(np.float32)
     Y_val = np.asarray(Y_val).astype(np.float32)
 
-    print(X_train.shape, X_val.shape, X_test.shape, Y_train.shape, Y_val.shape, Y_test.shape)
+    # print(X_train.shape, X_val.shape, X_test.shape, Y_train.shape, Y_val.shape, Y_test.shape)
 
     model = Sequential([Dense(32, activation='relu', input_shape=(5, )), Dense(32, activation='relu'),
                         Dense(1, activation='sigmoid'), ])
