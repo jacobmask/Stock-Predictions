@@ -1,12 +1,15 @@
 import numpy as np
 import tensorflow as tf
+from pandas import read_csv
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
 import math
 import yfinance as yf
 import matplotlib.pyplot as plt
 import pandas
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Dense, LSTM
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 
@@ -42,4 +45,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    rnn()
