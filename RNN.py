@@ -13,7 +13,7 @@ from keras.layers import Dense, LSTM
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 
-
+"""
 def main():
     # Graph modeling test:
     # sin_wave = np.array([math.sin(x) for x in np.arange(200)])
@@ -36,13 +36,21 @@ def main():
     X_val = np.asarray(X_val).astype(np.float32)
     Y_val = np.asarray(Y_val).astype(np.float32)
 
-    # print(X_train.shape, X_val.shape, X_test.shape, Y_train.shape, Y_val.shape, Y_test.shape)
+"""    # print(X_train.shape, X_val.shape, X_test.shape, Y_train.shape, Y_val.shape, Y_test.shape)
+#
+#    model = Sequential([Dense(32, activation='relu', input_shape=(5, )), Dense(32, activation='relu'),
+#                        Dense(1, activation='sigmoid'), ])
+#    model.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
+#    hist = model.fit(X_train, Y_train, batch_size=32, epochs=10, validation_data=(X_val, Y_val))
 
-    model = Sequential([Dense(32, activation='relu', input_shape=(5, )), Dense(32, activation='relu'),
-                        Dense(1, activation='sigmoid'), ])
-    model.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
-    hist = model.fit(X_train, Y_train, batch_size=32, epochs=10, validation_data=(X_val, Y_val))
-
+def rnn():
+    dataset = pandas.read_csv("Google.csv", usecols=[0, 1, 2, 3, 4, 5])
+    dataset.head()
+    train = dataset.loc[:, ['Open']].values
+    scaled_data = MinMaxScaler(feature_range=(0, 1))
+    train_scaled = scaled_data.fit_transform(train)
+    plt.plot(train_scaled)
+    plt.show() 
 
 if __name__ == '__main__':
     rnn()
