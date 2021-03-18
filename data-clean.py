@@ -36,7 +36,8 @@ for stock in stock_pop:
     df = df.fillna(method='ffill')
     df = df.rename_axis(index='Date')
     df.to_csv(stock + '.csv')
-
+    
+    
 
 #df1.to_csv("test.csv")
 
