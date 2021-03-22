@@ -1,3 +1,6 @@
+import os
+from os import listdir
+
 import numpy as np
 import tensorflow as tf
 from sklearn.metrics import mean_squared_error
@@ -14,11 +17,13 @@ from keras.layers import SimpleRNN
 from keras.layers import Dropout
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
+from os.path import isfile, join
 
 
 def main():
-    csv_list = ["Google.csv"]
-    for csv_name in csv_list:
+    csv_files = [f for f in listdir('StockCSV') if isfile(join("StockCSV", f))]
+    for csv_name in csv_files:
+        os.chdir('StockCSV')
         f_in = open(csv_name, 'r')
         csv_header = f_in.readline()
         csv_header_list = list(csv_header.split(','))
@@ -26,6 +31,7 @@ def main():
         for value in csv_header_list:
             print(csv_name, value)
             rnn(str(csv_name), str(value))
+        os.chdir('..')
 
 
 def rnn(csv_name, value):
