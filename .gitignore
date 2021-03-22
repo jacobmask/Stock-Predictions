@@ -8,3 +8,5 @@ test1/
 .bashrc
 .config/
 .local/
+.idea/
+venv/
