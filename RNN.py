@@ -71,6 +71,11 @@ from keras.layers import Dropout
 from sklearn import preprocessing 
 from sklearn.model_selection import train_test_split 
 
+#imports config epoch line
+from config import epoch
+
+
+
 def rnn():
     dataset = pandas.read_csv("Google.csv", usecols=[0, 1, 2, 3, 4, 5])
     dataset.head()
@@ -105,6 +110,6 @@ def rnn():
     # Compile the RNN
     regressor.compile(optimizer='adam', loss='mean_squared_error')
     # Fitting the RNN to the Training set
-    regressor.fit(X_train, Y_train, epochs=10, batch_size=32) 
+    regressor.fit(X_train, Y_train, epochs=epoch, batch_size=32) 
 if __name__ == '__main__':
     rnn()
