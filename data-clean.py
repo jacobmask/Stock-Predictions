@@ -35,7 +35,7 @@ for stock in stock_pop:
     df = pd.concat([hist, bs, earn], axis=1)
     df = df.fillna(method='ffill')
     df = df.rename_axis(index='Date')
-    df.to_csv(stock + '.csv')
+    df.to_csv('./data/'+stock+'.csv')
     
     
 
