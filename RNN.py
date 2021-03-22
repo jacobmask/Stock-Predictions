@@ -16,10 +16,22 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 
 
-def rnn():
-    dataset = pandas.read_csv("Google.csv", usecols=[0, 1, 2, 3, 4, 5])
+def main():
+    csv_list = ["Google.csv"]
+    for csv_name in csv_list:
+        f_in = open(csv_name, 'r')
+        csv_header = f_in.readline()
+        csv_header_list = list(csv_header.split(','))
+        csv_header_list = csv_header_list[1:5]
+        for value in csv_header_list:
+            print(csv_name, value)
+            rnn(str(csv_name), str(value))
+
+
+def rnn(csv_name, value):
+    dataset = pandas.read_csv(csv_name, usecols=[0, 1, 2, 3, 4, 5])
     dataset.head()
-    train = dataset.loc[:, ['Open']].values
+    train = dataset.loc[:, [value]].values
 
     scaled_data = MinMaxScaler(feature_range=(0, 1))
     train_scaled = scaled_data.fit_transform(train)
@@ -64,8 +76,8 @@ def rnn():
     regressor.compile(optimizer='adam', loss='mean_squared_error')
 
     # Fitting the RNN to the Training set
-    regressor.fit(X_train, Y_train, epochs=10, batch_size=32)
+    regressor.fit(X_train, Y_train, epochs=3, batch_size=32)
 
 
 if __name__ == '__main__':
-    rnn()
+    main()
