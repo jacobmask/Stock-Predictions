@@ -4,18 +4,21 @@
 Created on Wed Mar  3 14:15:47 2021
 
 @author: taleahbirkicht
+
+Modified: 3/24/2021
+Author: Jacob Mask
+Notes: Implemented config ticker list.
 """
 import yfinance as yf
 import pandas as pd
+from config import ticker_list
 
-stock_pop = ['NVDA', 'INTC', 'GOOGL', 'MSFT', 'AMZN', 
-             'FB', 'T', 'VZ', 'CSCO', 'ORCL']
 
 df1 = pd.DataFrame()
 current = []
 
 googl = yf.Ticker('GOOGL')
-for stock in stock_pop:
+for stock in ticker_list:
     current.append(stock)
     #get ticker
     ticker = yf.Ticker(stock)
@@ -35,7 +38,7 @@ for stock in stock_pop:
     df = pd.concat([hist, bs, earn], axis=1)
     df = df.fillna(method='ffill')
     df = df.rename_axis(index='Date')
-    df.to_csv('./data/'+stock+'.csv')
+    df.to_csv('./StockCSV/'+stock+'.csv')
     
     
 
