@@ -15,7 +15,6 @@ from config import ticker_list
 import numpy as np
 
 
-
 df1 = pd.DataFrame()
 
 for stock in ticker_list:
@@ -75,4 +74,3 @@ for stock in ticker_list:
     df = df.fillna(method='ffill')
     df = df.rename_axis(index='Date')
     df.to_csv('./StockCSV/'+stock+'.csv')
-
