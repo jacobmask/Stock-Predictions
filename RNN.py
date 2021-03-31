@@ -48,8 +48,8 @@ def rnn(data):
 
     stock_model.fit(train_data, output_data, epochs=10)
 
-    prediction = stock_model.predict(train_data, batch_size=None, verbose=0, steps=None, callbacks=None, max_queue_size=10,
-    workers=1, use_multiprocessing=False)
+    prediction = stock_model.predict(train_data, batch_size=None, verbose=0, steps=None, callbacks=None,
+                                     max_queue_size=10, workers=1, use_multiprocessing=False)
 
     # print(prediction)
 
