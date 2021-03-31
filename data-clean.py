@@ -4,6 +4,10 @@
 Created on Wed Mar  3 14:15:47 2021
 
 @author: taleahbirkicht
+
+Modified: 3/24/2021
+Author: Jacob Mask
+Notes: Implemented config ticker list.
 """
 import yfinance as yf
 import pandas as pd
@@ -72,4 +76,3 @@ for stock in ticker_list:
     df = df.rename_axis(index='Date')
     df.to_csv('./StockCSV/'+stock+'.csv')
 
- 
