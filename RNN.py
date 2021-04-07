@@ -67,8 +67,8 @@ def neural_network(data):
                                      max_queue_size=10, workers=1, use_multiprocessing=False)
 
     print(prediction)
-    plt.plot(prediction)
-    plt.show()
+    # plt.plot(prediction)
+    # plt.show()
 
 
 if __name__ == '__main__':
