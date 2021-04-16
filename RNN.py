@@ -16,12 +16,12 @@ def main():
     for csv_name in csv_files:
         df = pd.read_csv(csv_name, usecols=cols)
         # date = pandas.read_csv(csv_name, usecols=[0])
-        print(csv_name)
+        stock_name = "$" + csv_name[:-8]
         train_data = df.copy()
 
         # Single column output
-        output_data = df.pop("Close")
-        neural_network(train_data, output_data)
+        output_data = pd.DataFrame({"Close": df.pop("Close")})
+        neural_network(stock_name, train_data, output_data)
 
         # Double column output
         # output_data = pandas.DataFrame()
@@ -30,7 +30,8 @@ def main():
     os.chdir('..')
 
 
-def neural_network(train_data, output_data):
+def neural_network(stock_name, train_data, output_data):
+
     normalize = tf.keras.layers.experimental.preprocessing.Normalization()
 
     train_data = np.array(train_data)
@@ -49,14 +50,17 @@ def neural_network(train_data, output_data):
 
     # calculate num of epochs based on length of dataset
     weighted_epoch = round(len(train_data)/100)
-
+    print("-----Beginning training for %s-----" % stock_name)
     stock_model.fit(train_data, output_data, epochs=weighted_epoch)
 
     prediction = stock_model.predict(train_data, batch_size=None, verbose=0, steps=1, callbacks=None,
                                      max_queue_size=10, workers=1, use_multiprocessing=False)
 
+    print()
+    print("Same day price prediction for %s: " % stock_name, prediction[-1])
+    print("Actual price for %s: $" % stock_name + str(round(output_data["Close"][output_data.index[-1]],2)))
+    print()
 
-    print(prediction[-1])
     plt.plot(prediction)
     # plt.plot(output_data)
     plt.xlabel("Date")
@@ -67,6 +71,3 @@ def neural_network(train_data, output_data):
 if __name__ == '__main__':
     main()
 
-# high and low
-# next day output
-# layers
