@@ -13,6 +13,7 @@ import yfinance as yf
 import pandas as pd
 from config import ticker_list
 import numpy as np
+import datetime as dt
 
 
 df1 = pd.DataFrame()
@@ -22,16 +23,18 @@ for stock in ticker_list:
     ticker = yf.Ticker(stock)
     #collect data
     hist = ticker.history(period="max")
-    bs = ticker.balance_sheet
-    earn = ticker.earnings
+    #bs = ticker.balance_sheet
+    #earn = ticker.earnings
     rec = ticker.recommendations
     #transform
-    bs = bs.transpose()
+    #bs = bs.transpose()
     hist.index = hist.index.date
-    bs.index = bs.index.date
-    earn = earn.rename_axis(index='Date')
-    earn.index = earn.index.astype(str) + '-12-31'
-    earn.index = pd.to_datetime(earn.index)
+    hist = hist.rename_axis(index='Date')
+
+    #bs.index = bs.index.date
+    #earn = earn.rename_axis(index='Date')
+    #earn.index = earn.index.astype(str) + '-12-31'
+    #earn.index = pd.to_datetime(earn.index)
     rec = rec.drop(columns=['Firm', 'From Grade', 'Action'])
     rec['To Grade'] = rec['To Grade'].str.lower().replace({'sell': 1.0,
                                                'strong sell': 1.0,
@@ -64,13 +67,22 @@ for stock in ticker_list:
                                                'buy': 5.0,
                                                'long-term buy': 5.0,
                                                '': np.nan})
+
     rec = rec.dropna()
     rec.index = rec.index.date
     rec = rec.rename_axis(index='Date')
     rec.to_csv('test.csv')
     rec = rec.groupby('Date').agg({'To Grade': 'mean'})
+    hist = hist.rename_axis(index='Date')
+
+    hist2 = hist[(hist.index >= rec.index[0])]
+
     #combine
-    df = pd.concat([hist, rec, bs, earn], axis=1)
+    df = pd.concat([hist2, rec], axis=1, join='outer')
     df = df.fillna(method='ffill')
     df = df.rename_axis(index='Date')
-    df.to_csv('./StockCSV/'+stock+'.csv')
+    #df = df.append({'Date': dt.datetime.now() + dt.timedelta(days=1)}, ignore_index=True)
+    hist = hist.rename_axis(index='Date')
+    hist.to_csv('./StockCSV/'+stock+'.csv')
+    
+    df.to_csv('./StockCSVRecs/'+stock+'_rec'+'.csv')
