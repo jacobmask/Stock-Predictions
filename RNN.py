@@ -49,12 +49,9 @@ def neural_network(stock_name, train_data, output_data):
                         metrics=tf.keras.metrics.Accuracy())
 
     # calculate num of epochs based on length of dataset
-<<<<<<< HEAD
-    weighted_epoch = round(len(data.index)/100)
-=======
     weighted_epoch = round(len(train_data)/100)
     print("-----Beginning training for %s-----" % stock_name)
->>>>>>> 88b0321eedbfae496be1e30ec97734355d7d67fa
+
     stock_model.fit(train_data, output_data, epochs=weighted_epoch)
 
     prediction = stock_model.predict(train_data, batch_size=None, verbose=0, steps=1, callbacks=None,
