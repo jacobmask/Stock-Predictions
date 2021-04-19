@@ -1,49 +1,38 @@
 import os
 from os import listdir
-import numpy as np
-import tensorflow as tf
-from keras import models
-from sklearn.datasets import make_regression
-from sklearn.metrics import mean_squared_error
-from sklearn.preprocessing import MinMaxScaler
-from tensorflow import keras
-from tensorflow.keras import layers, preprocessing, experimental
-import math
-import yfinance as yf
-import matplotlib.pyplot as plt
-import pandas
-from keras.models import Sequential, Model
-from keras.layers import Dense, Input
-from keras.layers import SimpleRNN
-from keras.layers import Dropout
-# from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
 from os.path import isfile, join
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from tensorflow.keras import layers
 from config import cols
+import matplotlib.pyplot as plt
 np.set_printoptions(precision=3, suppress=True)
 
 
 def main():
-    csv_files = [f for f in listdir('StockCSV') if isfile(join("StockCSV", f))]
-    os.chdir('StockCSV')
+    csv_files = [f for f in listdir('StockCSVRecs') if isfile(join("StockCSVRecs", f))]
+    os.chdir('StockCSVRecs')
     for csv_name in csv_files:
-        df = pandas.read_csv(csv_name, usecols=cols)
-        print(csv_name)
-        neural_network(df)
+        df = pd.read_csv(csv_name, usecols=cols)
+        # date = pandas.read_csv(csv_name, usecols=[0])
+        stock_name = "$" + csv_name[:-8]
+        train_data = df.copy()
+
+        # Single column output
+        output_data = pd.DataFrame({"Close": df.pop("Close")})
+        neural_network(stock_name, train_data, output_data)
+
+        # Double column output
+        # output_data = pandas.DataFrame()
+        # output_data["Low"] = data.pop("Low")
+        # output_data["High"] = data.pop("High")
     os.chdir('..')
 
 
-def neural_network(data):
+def neural_network(stock_name, train_data, output_data):
+
     normalize = tf.keras.layers.experimental.preprocessing.Normalization()
-    train_data = data.copy()
-
-    # Single column output
-    output_data = data.pop("Close")
-
-    # Double column output
-    # output_data = pandas.DataFrame()
-    # output_data["Low"] = data.pop("Low")
-    # output_data["High"] = data.pop("High")
 
     train_data = np.array(train_data)
 
@@ -57,23 +46,32 @@ def neural_network(data):
 
     stock_model.compile(loss=tf.losses.MeanSquaredError(),
                         optimizer=tf.optimizers.Adam(),
-                        metrics=['accuracy'])
+                        metrics=tf.keras.metrics.Accuracy())
 
     # calculate num of epochs based on length of dataset
+<<<<<<< HEAD
     weighted_epoch = round(len(data.index)/100)
+=======
+    weighted_epoch = round(len(train_data)/100)
+    print("-----Beginning training for %s-----" % stock_name)
+>>>>>>> 88b0321eedbfae496be1e30ec97734355d7d67fa
     stock_model.fit(train_data, output_data, epochs=weighted_epoch)
 
-    prediction = stock_model.predict(train_data, batch_size=None, verbose=0, steps=None, callbacks=None,
+    prediction = stock_model.predict(train_data, batch_size=None, verbose=0, steps=1, callbacks=None,
                                      max_queue_size=10, workers=1, use_multiprocessing=False)
 
-    print(prediction)
-    # plt.plot(prediction)
+    print()
+    print("Same day price prediction for %s: " % stock_name, prediction[-1])
+    print("Actual price for %s: $" % stock_name + str(round(output_data["Close"][output_data.index[-1]],2)))
+    print()
+
+    plt.plot(prediction)
+    # plt.plot(output_data)
+    plt.xlabel("Date")
+    plt.ylabel("Price")
     # plt.show()
 
 
 if __name__ == '__main__':
     main()
 
-# high and low
-# next day output
-# layers
