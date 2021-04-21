@@ -1,7 +1,7 @@
 """
 Author: Tim Campbell
 Modified: 3/24/2021
-Notes: Implemented config ticker list.
+Notes: Implements a sequential neural network using keras.
 """
 
 import os
