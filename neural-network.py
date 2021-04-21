@@ -1,3 +1,9 @@
+"""
+Author: Tim Campbell
+Modified: 3/24/2021
+Notes: Implements a sequential neural network using keras.
+"""
+
 import os
 from os import listdir
 from os.path import isfile, join
@@ -15,7 +21,6 @@ def main():
     os.chdir('StockCSVRecs')
     for csv_name in csv_files:
         df = pd.read_csv(csv_name, usecols=cols)
-        # date = pandas.read_csv(csv_name, usecols=[0])
         stock_name = "$" + csv_name[:-8]
         train_data = df.copy()
 
@@ -50,16 +55,23 @@ def neural_network(stock_name, train_data, output_data):
 
     # calculate num of epochs based on length of dataset
     weighted_epoch = round(len(train_data)/100)
+
     print("-----Beginning training for %s-----" % stock_name)
 
+<<<<<<< HEAD:neural-network.py
     stock_model.fit(train_data, output_data, epochs=weighted_epoch,verbose=0)
+=======
+    stock_model.fit(train_data, output_data, epochs=weighted_epoch, verbose=0)
+>>>>>>> 0177742bb059df38798b3120b8ee874fe7df30a9:neural-network.py
 
     prediction = stock_model.predict(train_data, batch_size=None, verbose=0, steps=1, callbacks=None,
                                      max_queue_size=10, workers=1, use_multiprocessing=False)
 
+    prediction_price = float(str(prediction[-1]).strip("[").strip("]"))
+
     print()
-    print("Same day price prediction for %s: " % stock_name, prediction[-1])
-    print("Actual price for %s: $" % stock_name + str(round(output_data["Close"][output_data.index[-1]],2)))
+    print("Next closing price prediction for %s:" % stock_name, "$" + str(round(prediction_price, 2)))
+    print("Current price for %s: $" % stock_name + str(round(output_data["Close"][output_data.index[-1]], 2)))
     print()
 
     plt.plot(prediction)
