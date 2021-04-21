@@ -52,7 +52,7 @@ def neural_network(stock_name, train_data, output_data):
     weighted_epoch = round(len(train_data)/100)
     print("-----Beginning training for %s-----" % stock_name)
 
-    stock_model.fit(train_data, output_data, epochs=weighted_epoch)
+    stock_model.fit(train_data, output_data, epochs=weighted_epoch, verbose=0)
 
     prediction = stock_model.predict(train_data, batch_size=None, verbose=0, steps=1, callbacks=None,
                                      max_queue_size=10, workers=1, use_multiprocessing=False)

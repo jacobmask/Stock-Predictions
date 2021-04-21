@@ -8,4 +8,4 @@ newDay:
 runRNN:
 	cd /home/pnap32032/ &&\
 	source ./test1/bin/activate &&\
-	python3 RNN.py
+	python3 neural-network.py
