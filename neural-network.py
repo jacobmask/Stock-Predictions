@@ -58,11 +58,7 @@ def neural_network(stock_name, train_data, output_data):
 
     print("-----Beginning training for %s-----" % stock_name)
 
-<<<<<<< HEAD:neural-network.py
-    stock_model.fit(train_data, output_data, epochs=weighted_epoch,verbose=0)
-=======
     stock_model.fit(train_data, output_data, epochs=weighted_epoch, verbose=0)
->>>>>>> 0177742bb059df38798b3120b8ee874fe7df30a9:neural-network.py
 
     prediction = stock_model.predict(train_data, batch_size=None, verbose=0, steps=1, callbacks=None,
                                      max_queue_size=10, workers=1, use_multiprocessing=False)
