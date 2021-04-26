@@ -11,3 +11,9 @@ runRNN:
 	source ./env/bin/activate &&\
         cd automation/
 	python3 neural-network.py
+
+setupEnv:
+	cd .. &&\
+	python3 -m venv env
+	
+	
