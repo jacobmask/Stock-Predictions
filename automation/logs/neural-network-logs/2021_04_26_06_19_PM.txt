@@ -1,0 +1,5 @@
+cd .. &&\
+source ./env/bin/activate &&\
+        cd automation/
+python3 neural-network.py
+Makefile:10: recipe for target 'runNN' failed

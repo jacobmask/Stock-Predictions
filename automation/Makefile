@@ -3,13 +3,13 @@ SHELL=/bin/bash
 newDay:
 	cd .. &&\
 	source ./env/bin/activate &&\
-        cd automation/
+        cd automation/ &&\
 	python3 data-clean.py
 
-runRNN:
+runNN:
 	cd .. &&\
 	source ./env/bin/activate &&\
-        cd automation/
+        cd automation/ &&\
 	python3 neural-network.py
 
 firstTime:

@@ -71,7 +71,6 @@ for stock in ticker_list:
     rec = rec.dropna()
     rec.index = rec.index.date
     rec = rec.rename_axis(index='Date')
-    rec.to_csv('test.csv')
     rec = rec.groupby('Date').agg({'To Grade': 'mean'})
     hist = hist.rename_axis(index='Date')
 

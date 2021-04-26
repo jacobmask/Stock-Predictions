@@ -1,0 +1,54 @@
+cd .. &&\
+source ./env/bin/activate &&\
+        cd automation/
+python3 neural-network.py
+-----Beginning training for $INTC-----
+
+Next day price prediction for $INTC:  59.66
+Actual price for $INTC: $58.76
+
+-----Beginning training for $CSCO-----
+
+Next day price prediction for $CSCO:  51.72
+Actual price for $CSCO: $51.64
+
+-----Beginning training for $AMZN-----
+
+Next day price prediction for $AMZN:  3298.51
+Actual price for $AMZN: $3409.0
+
+-----Beginning training for $MSFT-----
+
+Next day price prediction for $MSFT:  260.81
+Actual price for $MSFT: $261.55
+
+-----Beginning training for $FB-----
+
+Next day price prediction for $FB:  302.24
+Actual price for $FB: $303.04
+
+-----Beginning training for $GOOGL-----
+
+Next day price prediction for $GOOGL:  2288.68
+Actual price for $GOOGL: $2309.93
+
+-----Beginning training for $ORCL-----
+
+Next day price prediction for $ORCL:  75.6
+Actual price for $ORCL: $74.5
+
+-----Beginning training for $VZ-----
+
+Next day price prediction for $VZ:  58.45
+Actual price for $VZ: $56.94
+
+-----Beginning training for $NVDA-----
+
+Next day price prediction for $NVDA:  609.4
+Actual price for $NVDA: $619.12
+
+-----Beginning training for $T-----
+
+Next day price prediction for $T:  31.32
+Actual price for $T: $30.91
+

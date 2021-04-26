@@ -1,4 +1,0 @@
-cd /home/pnap32032/ &&\
-source ./test1/bin/activate &&\
-python3 neural-network.py
-Makefile:9: recipe for target 'runRNN' failed

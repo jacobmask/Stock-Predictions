@@ -1,4 +1,0 @@
-cd .. &&\
-source ./env/bin/activate &&\
-        cd automation/
-Makefile:10: recipe for target 'runRNN' failed
