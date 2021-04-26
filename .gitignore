@@ -2,7 +2,6 @@ __pycache__
 .profile
 .python_history
 __MACOSX/
-test1/
 .cache/
 .bash_history
 .bash_logout
@@ -11,3 +10,5 @@ test1/
 .local/
 .idea/
 venv/
+env/
+test1/
