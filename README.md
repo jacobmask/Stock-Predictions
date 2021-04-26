@@ -15,6 +15,7 @@ You now have our project repository on your linux box.
 
 ### Setup our project(Easy Way)
 For our project we made a simple bash script that can setup everything for you to run our code. Or if you want to do it manually you can check our "Run our project(Hard way)". If you already have python3.6 or python3-venv on your server you may want to do the hard way and skip those steps. If unsure still, run this.
+Assuming you are in the `/application/4620-predicting-stock-prices` directory:
 1. Access our automation folder `cd automation`
 2. Run our make file in that sets up all the "Hard Way" steps `make firstTime`
 
