@@ -12,8 +12,13 @@ runRNN:
         cd automation/
 	python3 neural-network.py
 
-setupEnv:
+firstTime:
 	cd .. &&\
-	python3 -m venv env
-	
+	sudo apt-get install python3.6 &&\
+	sudo apt-get install python3-venv &&\
+	python3 -m venv env &&\
+	source env/bin/activate &&\
+	pip install --upgrade pip &&\
+	python3 -m pip install -r requirements.txt &&\
+	deactivate
 	
