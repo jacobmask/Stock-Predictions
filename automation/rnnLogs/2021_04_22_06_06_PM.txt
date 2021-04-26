@@ -1,0 +1,53 @@
+cd /home/pnap32032/ &&\
+source ./test1/bin/activate &&\
+python3 neural-network.py
+-----Beginning training for $INTC-----
+
+Next closing price prediction for $INTC: $63.05
+Current price for $INTC: $62.57
+
+-----Beginning training for $CSCO-----
+
+Next closing price prediction for $CSCO: $51.7
+Current price for $CSCO: $51.5
+
+-----Beginning training for $AMZN-----
+
+Next closing price prediction for $AMZN: $3342.7
+Current price for $AMZN: $3309.04
+
+-----Beginning training for $MSFT-----
+
+Next closing price prediction for $MSFT: $258.34
+Current price for $MSFT: $257.17
+
+-----Beginning training for $FB-----
+
+Next closing price prediction for $FB: $298.67
+Current price for $FB: $296.52
+
+-----Beginning training for $GOOGL-----
+
+Next closing price prediction for $GOOGL: $2261.78
+Current price for $GOOGL: $2252.52
+
+-----Beginning training for $ORCL-----
+
+Next closing price prediction for $ORCL: $75.42
+Current price for $ORCL: $74.87
+
+-----Beginning training for $VZ-----
+
+Next closing price prediction for $VZ: $57.99
+Current price for $VZ: $57.28
+
+-----Beginning training for $NVDA-----
+
+Next closing price prediction for $NVDA: $607.13
+Current price for $NVDA: $594.01
+
+-----Beginning training for $T-----
+
+Next closing price prediction for $T: $31.37
+Current price for $T: $31.36
+
