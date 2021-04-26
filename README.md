@@ -1,27 +1,49 @@
 # Stock Prediction Application
 
-## Installation
-This installation will be used in a linux environment. You can do this through the student server, if you have an account connect to [yourname]@student.cs.uni.edu through an ssh shell.
-
-Or this can be done having a virtualbox running ubuntu 18.04(preferred), a guide can be shown here:
+## First time Installation and setup guide
+This can be done having a virtualbox running ubuntu 18.04(preferred), a guide can be shown here:
 https://brb.nci.nih.gov/seqtools/installUbuntu.html
 
-This can still be done other ways, for our project we had a private virtual linux server, similar to the student server.  
+This can still be done other ways, for our project we had a private virtual linux server. The student server cannot work our project without changes to some files, since the student server is on python3.5 and we have it on 3.6.
 
 ### Cloning our Git repository
-1. Make a directory on the linux server you are using from the command line: `mkdir application`
+1. Make a directory on the linux server you are using from the command line(terminal): `mkdir application`
 2. Get into that directory: `cd application`
 3. Clone our repository: `git clone https://charon.cs.uni.edu/birkitaa/4620-predicting-stock-prices.git`
 4. Get into that repository: `cd 4620-predicting-stock-prices`
 You now have our project repository on your linux box.
 
-### Run our project(Easy Way)
-For our project we made a simple bash script that can setup everything for you to run our code. Or if you want to do it manually you can check our "Run our project(Hard way)".
-
-
-### Run our project(Hard way)
+### Setup our project(Easy Way)
+For our project we made a simple bash script that can setup everything for you to run our code. Or if you want to do it manually you can check our "Run our project(Hard way)". If you already have python3.6 or python3-venv on your server you may want to do the hard way and skip those steps. If unsure still, run this.
 Assuming you are in the `/application/4620-predicting-stock-prices` directory:
-1. Create a virtual environment `python3 -m venv env`
-2. Activate your environment `source env/bin/activate`
-3. Make sure pip is up to date `pip install --upgrade pip`
-4. 
+1. Access our automation folder `cd automation`
+2. Run our make file in that sets up all the "Hard Way" steps automatically `make firstTime`
+
+### Setup our project(Hard way)
+Assuming you are in the `/application/4620-predicting-stock-prices` directory:
+1. Install python3.6 `sudo apt-get install python3.6`
+2. Get python3 venv `sudo apt-get install python3-venv` 
+3. Create a virtual environment `python3 -m venv env`
+4. Activate your environment `source env/bin/activate`
+5. Make sure pip is up to date `pip install --upgrade pip`
+6. Get your env up to date with our packages `python3 -m pip install -r requirements.txt`
+NOTE: To close out of an environment, run `deactivate`
+
+
+## How to run our code properly
+Our code is all in python files, with some automation scripts in bash and makefiles. You can run our code yourself with our "Run our code yourself" guide, or have it automated with our "Run our code automatically" guide. The difference between the two is having bash scripts for the automatic guide, since we wanted our code to run automously. This can also be much simpler to run for beginners to linux.
+
+### Run Our Code yourself
+Our code has GPU and non GPU versions to run. If you want a graph(GPU version) that is our `./` directory. If you don't have a gpu use our `./automation/` directory.
+1. Enable your environment `source env/bin/activate`
+2. (OPTIONAL) Update our config.py with stock tickers you wish to use. Edit it with an editor like nano 
+   `nano config.py` -- follow similar formatting used in that file. Our stock ticker list currently contains stocks
+   that have analyst recommendations for better predictions. CTRL+X to exit, type Y and enter to save.
+3. Update the active stocks `python3 data-clean.py` this generates CSV file outputs of each stock in config.py to 
+   the StockCSVRecs folder with current data.
+4. Run the training model `python3 neural-network.py` this will print some warnings(ignore those) as well as
+   predicted prices for end of day versus current prices.
+
+### Run Our Code automatically
+Our automatically ran code is accessed in our `./automation` directory.
+1. `cd 
