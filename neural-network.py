@@ -16,8 +16,6 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
-np.set_printoptions(precision=3, suppress=True)
-
 
 def main():
     csv_files = [f for f in listdir('StockCSVRecs') if isfile(join("StockCSVRecs", f))]
@@ -30,6 +28,7 @@ def main():
 
         # Single column output
         # output_data = pd.DataFrame({"Close": df.pop("Close")})
+        tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
         neural_network(stock_name, df)
 
         # Double column output
