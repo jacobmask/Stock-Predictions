@@ -76,7 +76,7 @@ def neural_network(stock_name, df):
 
     print()
     print("Next market close price prediction for %s: " % stock_name, (str(round(prediction_price, 2))))
-    print("Actual price for %s: $" % stock_name + str(round(y_test[-1], 2)))
+    print("Current price for %s: $" % stock_name + str(round(y_test[-1], 2)))
     print()
 
     plt.plot(prediction, label='Predicted')
