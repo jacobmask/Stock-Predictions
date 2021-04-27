@@ -52,7 +52,7 @@ Our automatically ran code is accessed in our `./automation` directory.
    that have analyst recommendations for better predictions. CTRL+X to exit, type Y and enter to save.
 3. `./newDayScript.sh` this takes awhile to run, give it at least a minute. This runs our stock pulling for current
    data.
-4. `./runNNScript.sh` this creates end of day predictions and compares them to actual prices. The output is created in the "/automation/logs/neural-network-logs/" directory. Labeled as "Year_month_day_hour_minute.txt".
+4. `./runNNScript.sh` this creates end of day predictions and compares them to actual prices. The output is created in the "/automation/logs/neural-network-logs/" directory. Labeled as "Year_month_day_hour_minute.txt". This also prints errors when running in terminal if you don't have a GPU. That can be ignored, the output is still the same in the txt file.
 
 #### Have some fun with crontab
 We also had crontab running on our linux server, it can be viewed here: "./automation/crontabexample.txt". Crontab editting is in it's own file and needs to be created per linux server, so we have it in txt to show as an example. We had this run our stock puller and neural network 3 times a day to check for validation. We had our `./runNNScript.sh` email us everytime it was executed with the output. Making it easier to view from mobile, rather than having to login to the linux server everyday.
