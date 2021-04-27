@@ -46,4 +46,13 @@ Our code has GPU and non GPU versions to run. If you want a graph(GPU version) t
 
 ### Run Our Code automatically
 Our automatically ran code is accessed in our `./automation` directory.
-1. `cd 
+1. `cd automation`
+2. (OPTIONAL) Update our config.py with stock tickers you wish to use. Edit it with an editor like nano 
+   `nano config.py` -- follow similar formatting used in that file. Our stock ticker list currently contains stocks
+   that have analyst recommendations for better predictions. CTRL+X to exit, type Y and enter to save.
+3. `./newDayScript.sh` this takes awhile to run, give it at least a minute. This runs our stock pulling for current
+   data.
+4. `./runNNScript.sh` this creates end of day predictions and compares them to actual prices. The output is created in the "/automation/logs/neural-network-logs/" directory. Labeled as "Year_month_day_hour_minute.txt".
+
+#### Have some fun with crontab
+We also had crontab running on our linux server, it can be viewed here: "./automation/crontabexample.txt". Crontab editting is in it's own file and needs to be created per linux server, so we have it in txt to show as an example. We had this run our stock puller and neural network 3 times a day to check for validation. We had our `./runNNScript.sh` email us everytime it was executed with the output. Making it easier to view from mobile, rather than having to login to the linux server everyday.
