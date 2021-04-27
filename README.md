@@ -19,7 +19,7 @@ Assuming you are in the `/application/4620-predicting-stock-prices` directory:
 1. Access our automation folder `cd automation`
 2. Run our make file in that sets up all the "Hard Way" steps automatically `make firstTime`
 
-### Setup our project(Hard way)
+### Setup our project(Hard Way)
 Assuming you are in the `/application/4620-predicting-stock-prices` directory:
 1. Install python3.6 `sudo apt-get install python3.6`
 2. Get python3 venv `sudo apt-get install python3-venv` 
