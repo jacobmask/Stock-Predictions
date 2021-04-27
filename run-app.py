@@ -20,7 +20,7 @@ t = threading.Thread(target=animate)
 t.start()
 exec(open('data-clean.py').read())
 done = True
-print()
 time.sleep(2)
+print('\n')
 exec(open('neural-network.py').read())
 
