@@ -82,6 +82,5 @@ for stock in ticker_list:
     df = df.rename_axis(index='Date')
     #df = df.append({'Date': dt.datetime.now() + dt.timedelta(days=1)}, ignore_index=True)
     hist = hist.rename_axis(index='Date')
-    hist.to_csv('./StockCSV/'+stock+'.csv')
     
     df.to_csv('./StockCSVRecs/'+stock+'_rec'+'.csv')
