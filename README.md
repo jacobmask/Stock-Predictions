@@ -3,6 +3,7 @@
 ## First time Installation and setup guide
 This can be done having a virtualbox running ubuntu 18.04(preferred), a guide can be shown here:
 https://brb.nci.nih.gov/seqtools/installUbuntu.html
+Install the Desktop image of ubuntu here: https://releases.ubuntu.com/18.04/ and put that into the virtual box if that is your plan to use.
 
 This can still be done other ways, for our project we had a private virtual linux server. The student server cannot work our project without changes to some files, since the student server is on python3.5 and we have it on 3.6.
 
