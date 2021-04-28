@@ -3,7 +3,7 @@
 """
 Authors: Taleah Birkicht, Tim Campbell, Jacob Mask
 Last Modified: 4/28/21
-Description: This file automatically adds or modifies a csv for each of the
+Description: This file automatically adds a csv for each of the
 stock population determined by the config file into a folder called StockCSVRecs.
 The csv will contain historical market data for the stock price such as
 High Low, Close, Open as well as analyst recommendation data. The analyst
@@ -14,7 +14,17 @@ import pandas as pd
 from config import ticker_list
 import numpy as np
 import os
+import shutil
 
+
+#removes the StockCSVRecs folder to prepare for a new updated one
+#this is in case there are extra csvs that were run previously that are
+#no longer desired
+if os.path.exists('StockCSVRecs'):
+    shutil.rmtree('StockCSVRecs')
+    
+#creates directory to put csvs in
+os.makedirs('StockCSVRecs')
 
 for stock in ticker_list:
     #get ticker
@@ -76,10 +86,6 @@ for stock in ticker_list:
     #is made
     df = df.fillna(method='ffill')
     df = df.rename_axis(index='Date')
-    
-    #creates new folder if it does not already exist
-    if not os.path.exists('StockCSVRecs'):
-        os.makedirs('StockCSVRecs')
     
     #writes to csv file
     df.to_csv('./StockCSVRecs/'+stock+'_rec'+'.csv')
