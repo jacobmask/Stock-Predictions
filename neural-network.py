@@ -74,7 +74,7 @@ def neural_network(stock_name, df):
     prediction_price = float(str(prediction[-1]).strip("[").strip("]"))
 
     print()
-    print("Next market close price prediction for %s: " % stock_name, (str(round(prediction_price, 2))))
+    print("Next market close price prediction for %s: $" % stock_name, (str(round(prediction_price, 2))))
     print("Current price for %s: $" % stock_name + str(round(y_test[-1], 2)))
     print()
 

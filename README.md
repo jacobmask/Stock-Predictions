@@ -3,6 +3,7 @@
 ## First time Installation and setup guide
 This can be done having a virtualbox running ubuntu 18.04(preferred), a guide can be shown here:
 https://brb.nci.nih.gov/seqtools/installUbuntu.html
+Install the Desktop image of ubuntu here: https://releases.ubuntu.com/18.04/ and put that into the virtual box if that is your plan to use.
 
 This can still be done other ways, for our project we had a private virtual linux server. The student server cannot work our project without changes to some files, since the student server is on python3.5 and we have it on 3.6.
 
@@ -19,7 +20,7 @@ Assuming you are in the `/application/4620-predicting-stock-prices` directory:
 1. Access our automation folder `cd automation`
 2. Run our make file in that sets up all the "Hard Way" steps automatically `make firstTime`
 
-### Setup our project(Hard way)
+### Setup our project(Hard Way)
 Assuming you are in the `/application/4620-predicting-stock-prices` directory:
 1. Install python3.6 `sudo apt-get install python3.6`
 2. Get python3 venv `sudo apt-get install python3-venv` 
@@ -46,4 +47,13 @@ Our code has GPU and non GPU versions to run. If you want a graph(GPU version) t
 
 ### Run Our Code automatically
 Our automatically ran code is accessed in our `./automation` directory.
-1. `cd 
+1. `cd automation`
+2. (OPTIONAL) Update our config.py with stock tickers you wish to use. Edit it with an editor like nano 
+   `nano config.py` -- follow similar formatting used in that file. Our stock ticker list currently contains stocks
+   that have analyst recommendations for better predictions. CTRL+X to exit, type Y and enter to save.
+3. `./newDayScript.sh` this takes awhile to run, give it at least a minute. This runs our stock pulling for current
+   data.
+4. `./runNNScript.sh` this creates end of day predictions and compares them to actual prices. The output is created in the "/automation/logs/neural-network-logs/" directory. Labeled as "Year_month_day_hour_minute.txt". This also prints errors when running in terminal if you don't have a GPU. That can be ignored, the output is still the same in the txt file.
+
+#### Have some fun with crontab
+We also had crontab running on our linux server, it can be viewed here: "./automation/crontabexample.txt". Crontab editting is in it's own file and needs to be created per linux server, so we have it in txt to show as an example. We had this run our stock puller and neural network 3 times a day to check for validation. We had our `./runNNScript.sh` email us everytime it was executed with the output. Making it easier to view from mobile, rather than having to login to the linux server everyday.
