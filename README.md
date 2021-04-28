@@ -40,6 +40,7 @@ Our code has GPU and non GPU versions to run. If you want a graph(GPU version) t
 2. (OPTIONAL) Update our config.py with stock tickers you wish to use. Edit it with an editor like nano 
    `nano config.py` -- follow similar formatting used in that file. Our stock ticker list currently contains stocks
    that have analyst recommendations for better predictions. CTRL+X to exit, type Y and enter to save.
+(OPTIONAL) - You can run our `run-app.py` file and skip steps 3 and 4 if you wish. You can run it with `python3 run-app.py`
 3. Update the active stocks `python3 data-clean.py` this generates CSV file outputs of each stock in config.py to 
    the StockCSVRecs folder with current data.
 4. Run the training model `python3 neural-network.py` this will print some warnings(ignore those) as well as
