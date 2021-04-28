@@ -59,8 +59,7 @@ def neural_network(stock_name, df):
         layers.Dense(1)])
 
     stock_model.compile(loss=tf.losses.MeanSquaredError(),
-                        optimizer=tf.optimizers.Adam(),
-                        metrics=tf.keras.metrics.Accuracy())
+                        optimizer=tf.optimizers.Adam())
 
     # calculate num of epochs based on length of dataset
     weighted_epoch = round(len(df) / 100)
@@ -74,13 +73,13 @@ def neural_network(stock_name, df):
     prediction_price = float(str(prediction[-1]).strip("[").strip("]"))
 
     print()
-    print("Next market close price prediction for %s: $" % stock_name, (str(round(prediction_price, 2))))
+    print("Next market close price prediction for %s: " % stock_name, '$'+(str(round(prediction_price, 2))))
     print("Current price for %s: $" % stock_name + str(round(y_test[-1], 2)))
     print()
 
     plt.plot(prediction, label='Predicted')
     plt.plot(y_test, label='Actual')
-    #plt.plot(output_data)
+    # plt.plot(output_data)
     plt.title(stock_name)
     plt.xlabel("Date")
     plt.ylabel("Price")
