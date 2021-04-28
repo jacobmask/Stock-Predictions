@@ -57,3 +57,5 @@ Our automatically ran code is accessed in our `./automation` directory.
 
 #### Have some fun with crontab
 We also had crontab running on our linux server, it can be viewed here: "./automation/crontabexample.txt". Crontab editting is in it's own file and needs to be created per linux server, so we have it in txt to show as an example. We had this run our stock puller and neural network 3 times a day to check for validation. We had our `./runNNScript.sh` email us everytime it was executed with the output. Making it easier to view from mobile, rather than having to login to the linux server everyday.
+
+NOTE: Our bash scripts work when you run them directly, but if you want crontabs to work running them you will need to edit some code. In the `newDayScript.sh` file you need the full path on line 3 for the output `logs/newDayLogs.txt`to `directorysbefore/automation/logs/newDayLogs.txt`. Line 2 and 3 of `runNNScript.sh` also needs full path directories for their last parts of code. This is an issue with crontab running from root I believe and has a root directory while running these files.
