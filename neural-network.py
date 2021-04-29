@@ -64,8 +64,8 @@ def neural_network(stock_name, df):
 
     # calculate num of epochs based on length of dataset
     weighted_epoch = round(len(df) / 100)
-    print("-----Beginning training for %s-----" % stock_name)
 
+    print("-----Beginning training for %s-----" % stock_name)
     # fit the model with traning data
     stock_model.fit(X_train, y_train, epochs=weighted_epoch, verbose=0)
 
