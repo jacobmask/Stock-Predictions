@@ -1,13 +1,13 @@
 SHELL=/bin/bash
 
 newDay:
-	cd .. &&\
+	cd /home/pnap32032/ &&\
 	source ./env/bin/activate &&\
         cd automation/ &&\
 	python3 data-clean.py
 
 runNN:
-	cd .. &&\
+	cd /home/pnap32032 &&\
 	source ./env/bin/activate &&\
         cd automation/ &&\
 	python3 neural-network.py
