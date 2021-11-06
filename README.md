@@ -1,8 +1,5 @@
 # Stock Prediction Application
 
-## Updates
-Currently turning this into a LAMP stack website for my Master's Program
-
 ## First time Installation and setup guide
 This can be done having a virtualbox running ubuntu 18.04(preferred), a guide can be shown here:
 https://brb.nci.nih.gov/seqtools/installUbuntu.html
@@ -19,12 +16,12 @@ You now have our project repository on your linux box.
 
 ### Setup our project(Easy Way)
 For our project we made a simple bash script that can setup everything for you to run our code. Or if you want to do it manually you can check our "Run our project(Hard way)". If you already have python3.6 or python3-venv on your server you may want to do the hard way and skip those steps. If unsure still, run this.
-Assuming you are in the `/application/4620-predicting-stock-prices` directory:
+Assuming you are in the `/application/Stock-Predictions` directory:
 1. Access our automation folder `cd automation`
 2. Run our make file in that sets up all the "Hard Way" steps automatically `make firstTime`
 
 ### Setup our project(Hard Way)
-Assuming you are in the `/application/4620-predicting-stock-prices` directory:
+Assuming you are in the `/application/Stock-Predictions` directory:
 1. Install python3.6 `sudo apt-get install python3.6`
 2. Get python3 venv `sudo apt-get install python3-venv` 
 3. Create a virtual environment `python3 -m venv env`
