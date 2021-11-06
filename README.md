@@ -10,7 +10,7 @@ This can still be done other ways, for our project we had a private virtual linu
 ### Cloning our Git repository
 1. Make a directory on the linux server you are using from the command line(terminal): `mkdir application`
 2. Get into that directory: `cd application`
-3. Clone our repository: `git clone https://charon.cs.uni.edu/birkitaa/4620-predicting-stock-prices.git`
+3. Clone our repository: `gh repo clone jacobmask/Stock-Predictions`
 4. Get into that repository: `cd 4620-predicting-stock-prices`
 You now have our project repository on your linux box.
 
