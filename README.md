@@ -1,5 +1,8 @@
 # Stock Prediction Application
 
+## Updates
+Currently turning this into a LAMP stack website for my Master's Program
+
 ## First time Installation and setup guide
 This can be done having a virtualbox running ubuntu 18.04(preferred), a guide can be shown here:
 https://brb.nci.nih.gov/seqtools/installUbuntu.html
